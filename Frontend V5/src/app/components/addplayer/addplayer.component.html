@@ -1,0 +1,93 @@
+<div class="bootstrap-wrapper">
+    <div class="container mt">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                   
+                </div>
+                <h1 class="text-center">Add a Player</h1>
+
+                <!-- Creating form fields -->
+                <form ngNativeValidate  #addplayerform="ngForm" (ngSubmit)="addplayer()">
+                    <div *ngIf="name.errors && (name.invalid && name.touched)">
+                        <small class="text-danger" *ngIf="name.errors['required']" >Name  Is Required Field</small>
+                        <small class="text-danger" *ngIf="name.errors['pattern']">Name In Alphabates Only </small>
+                      </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Player Name</mat-label>
+                        <input required type="text" name="Player Name" [(ngModel)]="addplayerlist.playerName" matInput required pattern="^[A-Za-z -]+$" #name="ngModel" 
+                        [class.is-invalid]="name.invalid && name.touched" />
+                    </mat-form-field>
+
+
+                    <div *ngIf="age.errors && (age.invalid && age.touched)">
+                        <small class="text-danger" *ngIf="age.errors['required']" >Age Is Required Field</small>
+                        <small class="text-danger" *ngIf="age.errors['pattern']">Numerical Age Required</small>
+                    </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Age</mat-label>
+                        <input required type="number" name="Age" [(ngModel)]="addplayerlist.age" matInput required pattern="^[0-9]+$" #age="ngModel" 
+                        [class.is-invalid]="age.invalid && age.touched" />
+                    </mat-form-field>
+                    
+
+                    <div *ngIf="Contact.errors && (Contact.invalid && Contact.touched)">
+                        <small class="text-danger" *ngIf="Contact.errors['required']" >Contact  Is Required Field</small>
+                        <small class="text-danger" *ngIf="Contact.errors['pattern']">Valid Contact No. Required</small>
+                      </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Contact Number</mat-label>
+                        <input required type="number" [(ngModel)]="addplayerlist.contactNumber" name="Contact Number" matInput required pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$" #Contact="ngModel" 
+                        [class.is-invalid]="Contact.invalid && Contact.touched" />
+                    </mat-form-field>
+
+                    <div *ngIf="email.errors && (email.invalid && email.touched)">
+                        <small class="text-danger" *ngIf="email.errors['required']" >Email Id Is Required Field</small>
+                        <small class="text-danger" *ngIf="email.errors['pattern']">Please Enter Valid Email Address</small>
+                    </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Email address</mat-label>
+                        <input required type="email" [(ngModel)]="addplayerlist.email" name="Email address" matInput required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #email="ngModel" 
+                        [class.is-invalid]="email.invalid && email.touched" />
+                    </mat-form-field>
+
+
+                    <div *ngIf="gender.errors && (gender.invalid && gender.touched)">
+                        <small class="text-danger" *ngIf="gender.errors['required']" >Gender Is Required Field</small>
+                        <small class="text-danger" *ngIf="gender.errors['pattern']">Valid Gender Is Required</small>
+                    </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Gender</mat-label>
+                        <input required type="text" [(ngModel)]="addplayerlist.gender" name="Gender" matInput required pattern="^[a-zA-Z-]+$" #gender="ngModel" 
+                        [class.is-invalid]="gender.invalid && gender.touched" />
+                    </mat-form-field>
+                    <div *ngIf="sportsName.errors && (sportsName.invalid && sportsName.touched)">
+                        <small class="text-danger" *ngIf="sportsName.errors['required']" >Sports Is Required Field</small>
+                    </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>Select Sports</mat-label>
+                      <mat-select required  [(ngModel)]="addplayerlist.sportsName" name="sportsName" [class.is-invalid]="sportsName.invalid && sportsName.touched" #sportsName="ngModel">
+                        <mat-option>Select Sports</mat-option>
+                        <mat-option *ngFor="let Event of sportslistarray" [value]="Event.sportsName">
+                            {{Event.sportsName}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <!-- <ng-select [(ngModel)]="addplayerlist.sportsName" name="sportsName">
+                        <ng-option *ngFor="let Event of sportslistarray" [value]="Event.sportsName">{{Event.sportsName}}</ng-option>
+                     </ng-select> -->
+
+
+
+                    
+
+                    <div class="container text-center">
+                        <button [disabled]="addplayerform.invalid" type="submit" style="background-color: rgb(12, 134, 126);color: #fff;" mat-raised-button>Add Player</button>
+                        <button style="margin-left: 10px;" mat-raised-button color="primary" routerLink="/playerlist">View List</button>
+                    </div>
+                </form>
+                <!-- {{credentials | json}} -->
+            </div>
+        </div>
+    </div>
+</div>

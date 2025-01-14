@@ -1,0 +1,40 @@
+<html>
+<head>
+</head>
+<body>
+
+
+<h1 class="text-center mt">Sports List</h1>
+<div class="bootstrap-wrapper">
+    <div class="container mt text-center">
+        <form (submit)="searchBySportsName()">
+            <input type="text" placeholder="Search.." name="search" [(ngModel)]="searchSport"> &nbsp;
+            <button mat-raised-button color="primary" type="submit">Search</button>
+          </form>
+        <a  mat-raised-button color="primary" class="mb mt" routerLink='/sportslist'>Back</a> &nbsp;
+        <div class="row">
+<table *ngIf="data" id="customers">  
+    <thead>
+        <tr>
+            <th>Sports Id</th>
+            <th>No Of Players</th>
+            <th>Sports Name</th>
+            <th>Sports Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let Event of sportsFetchedData">
+            <td>{{Event.sportsId}}</td>
+            <td>{{Event.noOfPlayers}}</td>
+            <td>{{Event.sportsName}}</td>
+            <td>{{Event.sportsType}}</td>
+        </tr>  
+  </tbody>
+</table>
+<h3 *ngIf="!data" class="text-center red">{{noDataDisplay}}</h3>
+</div>
+</div>
+</div>
+
+</body>
+</html>

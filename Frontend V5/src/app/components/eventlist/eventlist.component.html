@@ -1,0 +1,44 @@
+<html>
+<head>
+</head>
+<body>
+
+
+<h1 class="text-center mt">Events List</h1>
+<div class="bootstrap-wrapper">
+    <div class="container mt">
+        <a  mat-raised-button color="primary" class="mb"  routerLink='/addevents'>Add Events</a> &nbsp;
+        <a  mat-raised-button color="primary" class="mb"  routerLink='/searchEvents'>Search Events</a>
+        <div class="row">
+<table id="customers">  
+    <thead>
+        <tr>
+            <th>Event Id</th>
+            <th>Event Name</th>
+            
+            <th>Sports Name</th>
+            <th>No Of Slots</th>
+            <th>Event Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let Event of Eventarray" >
+            <td>{{Event.eventId}}</td>
+            <td>{{Event.eventName}}</td>
+           
+            <td>{{Event.sportsName}}</td>
+            <td>{{Event.noOfSlots}}</td>
+            <td>{{this.datepipe.transform(Event.eventDate, 'dd/MM/yyyy') }}</td>
+            <td>
+                <button type="button" mat-raised-button color="warn" (click)="alertConfirmation(Event,Event.eventId);">Delete</button>&nbsp;&nbsp;
+            </td>
+        </tr>  
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+
+</body>
+</html>

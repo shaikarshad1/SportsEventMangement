@@ -1,0 +1,73 @@
+#Approved,#customer1,#Pending {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #Approved td, #Approved th,#Declined td, #Declined th,#Pending td,#Pending th{
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #Approved tr:nth-child(even){background-color: #f2f2f2;}
+  #Declined tr:nth-child(even){background-color: #f2f2f2;}
+  #Pending tr:nth-child(even){background-color: #f2f2f2;}
+
+  
+  #Approved tr:hover {background-color: #ddd;}
+  #Declined tr:hover {background-color: #ddd;}
+  #Pending tr:hover {background-color: #ddd;}
+  
+  #Approved th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #0c9b77;
+    color: white;
+  }
+
+  #Declined th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(214, 102, 22);
+    color: white;
+  }
+
+  #Pending th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: rgb(2, 87, 197);
+    color: white;
+  }
+
+.text-center{
+    text-align: center;
+}
+.mt{
+    margin-top: 20px;
+}
+.mb{
+    margin-bottom: 10px;
+}
+.red{
+  color: red;
+  text-transform: uppercase;
+}
+.custom-select {
+  height: auto;
+  width: 40%;
+  padding: 15px;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: 400;
+  color: #000;
+  background-color: #ffffff;
+  border: 2px solid #000;
+}
+.mat-label{
+  font-size: 25px;
+  color: rgb(62, 62, 62);
+  padding-right: 2%;
+}

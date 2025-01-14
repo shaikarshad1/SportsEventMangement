@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <!-- <mat-select name="status" [(ngModel)]="status" (ngModelChange)="display(status)" #status="ngModel" class="mat-select mat" required >
+        <mat-option>Select Status</mat-option>
+        <mat-option>Approved</mat-option>
+        <mat-option>Declined</mat-option>
+        <mat-option>Pending</mat-option>
+    </mat-select> -->
+    <div style="padding-top:5%;" class="text-center">
+        <label class="mat-label" for="status">Select Status</label>
+        <select name="status" (change)="display($event)" #status class="custom-select mb-3" required >
+            <option>Select Status</option>
+            <option>Approved</option>
+            <option>Declined</option>
+            <option>Pending</option>
+        </select>
+    </div>
+<div *ngIf="displayApproved" class="bootstrap-wrapper">
+    <div class="container mt text-center">
+        <h1 class="text-center mt">Approved Participation List</h1>
+        <div class="row">
+            
+
+<table *ngIf="approvedData" id="Approved">
+    
+    <thead>
+        <tr>
+            <th>Participation Id</th>
+            <th>Player Id</th>
+            <th>Player Name</th>
+            <th>Event Id</th>
+            <th>Event Name</th>
+            <th>Sports Id</th>
+            <th>Sports Name</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let player of participationarray">
+            <td>{{player.participation_id}}</td>
+            <td>{{player.player_id}}</td>
+            <td>{{player.player_name}}</td>
+            <td>{{player.event_id}}</td>
+            <td>{{player.event_name}}</td>
+            <td>{{player.sports_id}}</td>
+            <td>{{player.sports_name}}</td>
+            <td>{{player.status}}</td>
+        </tr>  
+  </tbody>
+</table>
+<h3 class="text-center red">{{noDataDisplay}}</h3>
+</div>
+</div>
+</div>
+
+<div *ngIf="displayDeclined" class="bootstrap-wrapper">
+    <div class="container mt text-center">
+        <h1 class="text-center mt">Declined Participation List</h1>
+        <div class="row">
+<table *ngIf="declinedData" id="Declined">
+    
+    <thead>
+        <tr>
+            <th>Participation Id</th>
+            <th>Player Id</th>
+            <th>Player Name</th>
+            <th>Event Id</th>
+            <th>Event Name</th>
+            <th>Sports Id</th>
+            <th>Sports Name</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let player of participationdeclined">
+            <td>{{player.participation_id}}</td>
+            <td>{{player.player_id}}</td>
+            <td>{{player.player_name}}</td>
+            <td>{{player.event_id}}</td>
+            <td>{{player.event_name}}</td>
+            <td>{{player.sports_id}}</td>
+            <td>{{player.sports_name}}</td>
+            <td>{{player.status}}</td>
+        </tr>  
+  </tbody>
+</table>
+<h3 class="text-center red">{{noDataDisplay1}}</h3>
+</div>
+</div>
+</div>
+
+<div *ngIf="displayPending" class="bootstrap-wrapper">
+    <div class="container mt text-center">
+        <h1 class="text-center mt">Pending Participation List</h1>
+        <div class="row">
+<table *ngIf="pendingData" id="Pending">
+    
+    <thead>
+        <tr>
+            <th>Participation Id</th>
+            <th>Player Id</th>
+            <th>Player Name</th>
+            <th>Event Id</th>
+            <th>Event Name</th>
+            <th>Sports Id</th>
+            <th>Sports Name</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let player of participationPending">
+            <td>{{player.participation_id}}</td>
+            <td>{{player.player_id}}</td>
+            <td>{{player.player_name}}</td>
+            <td>{{player.event_id}}</td>
+            <td>{{player.event_name}}</td>
+            <td>{{player.sports_id}}</td>
+            <td>{{player.sports_name}}</td>
+            <td>{{player.status}}</td>
+        </tr>  
+  </tbody>
+</table>
+<h3 class="text-center red">{{noDataDisplay2}}</h3>
+</div>
+</div>
+</div>
+
+</body>
+</html>

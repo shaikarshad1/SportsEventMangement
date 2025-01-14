@@ -1,0 +1,116 @@
+<div class="bootstrap-wrapper">
+    <div class="container mt">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+
+                <h1 class="text-center">Add a Participant</h1>
+
+                <!-- Creating form fields -->
+                <form #addplayerform="ngForm" (ngSubmit)="addparticipant()">
+                    <div *ngIf="id.errors && (id.invalid && id.touched)">
+                        <small class="text-danger" *ngIf="id.errors['required']" >ID  Is Required Field</small>
+                        <small class="text-danger" *ngIf="id.errors['pattern']">ID In Number Only </small>
+                        
+                      </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label  *ngIf="validId2" >Player ID</mat-label>
+                        <mat-label  *ngIf="!validId2" style="color: red">Player ID is Invalid</mat-label>
+                        <input type="text" name="Player id" [(ngModel)]="addParticipanToList.player_id" (ngModelChange)="getInfo(addParticipanToList.player_id)"  matInput required pattern="^(?:[1-9][0-9]{0,4}(?:\.\d{1,2})?|100000|100000.00)$" #id="ngModel" 
+                        [class.is-invalid]="id.invalid && id.touched && !validId " />
+                        
+                    </mat-form-field>
+                    <div *ngIf="name.errors && (name.invalid && name.touched)">
+                        <small class="text-danger" *ngIf="name.errors['required']" >Name  Is Required Field</small>
+                        <small class="text-danger" *ngIf="name.errors['pattern']">Name In Alphabates Only </small>
+                      </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Player Name</mat-label>
+                        <input type="text"  disabled name="Player Name" [(ngModel)]="playerData.playerName" matInput required pattern="^[A-Za-z -]+$" #name="ngModel" 
+                        [class.is-invalid]="name.invalid && name.touched" />
+                    </mat-form-field>
+
+
+                    <div *ngIf="age.errors && (age.invalid && age.touched)">
+                        <small class="text-danger" *ngIf="age.errors['required']" >Age Is Required Field</small>
+                        <small class="text-danger" *ngIf="age.errors['pattern']">Numerical Age Required</small>
+                    </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Age</mat-label>
+                        <input type="number" disabled name="Age" [(ngModel)]="playerData.age" matInput required pattern="^[0-9]+$" #age="ngModel" 
+                        [class.is-invalid]="age.invalid && age.touched" />
+                    </mat-form-field>
+                    
+
+                    <div *ngIf="Contact.errors && (Contact.invalid && Contact.touched)">
+                        <small class="text-danger" *ngIf="Contact.errors['required']" >Contact  Is Required Field</small>
+                        <small class="text-danger" *ngIf="Contact.errors['pattern']">Valid Contact No. Required</small>
+                      </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Contact Number</mat-label>
+                        <input type="number" disabled [(ngModel)]="playerData.contactNumber" name="Contact Number" matInput required pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$" #Contact="ngModel" 
+                        [class.is-invalid]="Contact.invalid && Contact.touched" />
+                    </mat-form-field>
+
+                    <div *ngIf="email.errors && (email.invalid && email.touched)">
+                        <small class="text-danger" *ngIf="email.errors['required']" >Email Id Is Required Field</small>
+                        <small class="text-danger" *ngIf="email.errors['pattern']">Please Enter Valid Email Address</small>
+                    </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Email address</mat-label>
+                        <input type="email" disabled [(ngModel)]="playerData.email" name="Email address" matInput required pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$" #email="ngModel" 
+                        [class.is-invalid]="email.invalid && email.touched" />
+                    </mat-form-field>
+
+
+                    <div *ngIf="gender.errors && (gender.invalid && gender.touched)">
+                        <small class="text-danger" *ngIf="gender.errors['required']" >Gender Is Required Field</small>
+                        <small class="text-danger" *ngIf="gender.errors['pattern']">Valid Gender Is Required</small>
+                    </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Gender</mat-label>
+                        <input type="text" disabled [(ngModel)]="playerData.gender" name="Gender" matInput required pattern="^[a-zA-Z-]+$" #gender="ngModel" 
+                        [class.is-invalid]="gender.invalid && gender.touched" />
+                    </mat-form-field>
+
+
+                    <div *ngIf="sport.errors && (sport.invalid && sport.touched)">
+                        <small class="text-danger" *ngIf="sport.errors['required']" >Sport Name Is Required Field</small>
+                        <small class="text-danger" *ngIf="sport.errors['pattern']">Please Enter Valid sport Name</small>
+                      </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Sports Name</mat-label>
+                        <input type="text" disabled [(ngModel)]="playerData.sportsName" name="Sports Name" matInput required pattern="^[a-zA-Z -]+$" #sport="ngModel" 
+                        [class.is-invalid]="sport.invalid && sport.touched" />
+                    </mat-form-field>
+
+                    <!-- <div *ngIf="event.errors && (event.invalid && event.touched)">
+                        <small class="text-danger" *ngIf="event.errors['required']" >event Name Is Required Field</small>
+                        <small class="text-danger" *ngIf="event.errors['pattern']">Please Enter Valid event Name</small>
+                      </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Event Name</mat-label>
+                        <input type="text" [(ngModel)]="addParticipanToList.event_name" name="events Name" matInput required pattern="^[a-zA-Z -]+$" #event="ngModel" 
+                        [class.is-invalid]="event.invalid && event.touched" />
+                    </mat-form-field> -->
+
+                    <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>Select Event</mat-label>
+                      <mat-select  [(ngModel)]="addParticipanToList.event_name" name="event_name" [class.is-invalid]="event_name.invalid && event_name.touched" #event_name="ngModel">
+                        <mat-option>Select Sports</mat-option>
+                        <mat-option *ngFor="let Event of eventList" [value]="Event.eventId">
+                            {{Event.eventName}}| Event ID-{{Event.eventId}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <input type="hidden" [(ngModel)]="addParticipanToList.status" value= "pending" name="events id"  />
+                    <div class="container text-center">
+                        <button *ngIf="!validId" type="submit" style="background-color: rgb(108, 138, 136);color: #fff;" mat-raised-button color="primary" disabled="">Add Participant</button>
+                        <button *ngIf="validId" type="submit" style="background-color: rgb(12, 134, 126);color: #fff;" mat-raised-button color="primary">Add Participant</button>
+                        <button style="margin-left: 10px; background-color: rgb(46, 71, 195);color: #fff;"mat-raised-button color="accent" routerLink="/participationList">View List</button>
+                    </div>
+                </form>
+                <!-- {{credentials | json}} -->
+            </div>
+        </div>
+    </div>
+</div>

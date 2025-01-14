@@ -1,0 +1,77 @@
+<div class="bootstrap-wrapper">
+    <div class="container mt">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="container text-center">
+                   
+                </div>
+                <h1 class="text-center">Add an Event</h1>
+
+                <!-- Creating form fields -->
+                <form #addplayerform="ngForm" (ngSubmit)="addEvent()">
+                   
+                    <div *ngIf="eventDate.errors && (eventDate.invalid && eventDate.touched)">
+                        <small class="text-danger" *ngIf="eventDate.errors['required']" >eventDate  Is Required Field</small>
+                        <small class="text-danger" *ngIf="eventDate.errors['pattern']">eventDate In Format 2017-11-30 </small>
+                      </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Event Date</mat-label>
+                        <input type="text" name="eventDate" [(ngModel)]="addEventList.eventDate" matInput required pattern="^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$" #eventDate="ngModel" 
+                        [class.is-invalid]="eventDate.invalid && eventDate.touched" />
+                    </mat-form-field>
+
+                    <div *ngIf="eventname.errors && (eventname.invalid && eventname.touched)">
+                        <small class="text-danger" *ngIf="eventname.errors['required']" >Event Name  Is Required Field</small>
+                        <small class="text-danger" *ngIf="eventname.errors['pattern']">Event Name In Alphabates Only </small>
+                      </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Event Name</mat-label>
+                        <input type="text" name="eventname" [(ngModel)]="addEventList.eventName" matInput required pattern="^[A-Za-z -]+$" #eventname="ngModel" 
+                        [class.is-invalid]="eventname.invalid && eventname.touched" />
+                    </mat-form-field>
+
+
+                    <div *ngIf="noOfSlots.errors && (noOfSlots.invalid && noOfSlots.touched)">
+                        <small class="text-danger" *ngIf="noOfSlots.errors['required']" >noOfSlots Is Required Field</small>
+                        <small class="text-danger" *ngIf="noOfSlots.errors['pattern']">Numerical noOfSlots Required</small>
+                    </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>No Of Slots</mat-label>
+                        <input type="number" name="noOfSlots" [(ngModel)]="addEventList.noOfSlots" matInput required pattern="^[0-9]+$" #noOfSlots="ngModel" 
+                        [class.is-invalid]="noOfSlots.invalid && noOfSlots.touched" />
+                    </mat-form-field>
+                    <div *ngIf="sportsName.errors && (sportsName.invalid && sportsName.touched)">
+                        <small class="text-danger" *ngIf="sportsName.errors['required']" >Gender Is Required Field</small>
+                    </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                      <mat-label>Select Sports</mat-label>
+                      <mat-select  [(ngModel)]="addEventList.sportsName" name="sportsName" [class.is-invalid]="sportsName.invalid && sportsName.touched" #sportsName="ngModel">
+                        <mat-option>Select Sports</mat-option>
+                        <mat-option *ngFor="let Event of sportslistarray" [value]="Event.sportsName">
+                            {{Event.sportsName}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+
+<!-- 
+
+                    <div *ngIf="sport.errors && (sport.invalid && sport.touched)">
+                        <small class="text-danger" *ngIf="sport.errors['required']" >Sport Name Is Required Field</small>
+                        <small class="text-danger" *ngIf="sport.errors['pattern']">Please Enter Valid sport Name</small>
+                      </div>
+                    <mat-form-field class="full-width" appearance="outline">
+                        <mat-label>Sports Name</mat-label>
+                        <input type="text" [(ngModel)]="addEventList.sportsName" name="Sports Name" matInput required pattern="^[a-zA-Z -]+$" #sport="ngModel" 
+                        [class.is-invalid]="sport.invalid && sport.touched" />
+                    </mat-form-field> -->
+
+                    <div class="container text-center">
+                        <button [disabled]="addplayerform.invalid" type="submit" style="background-color: rgb(12, 134, 126);color: #fff;"mat-raised-button color="primary">Add Event</button>
+                        <button style="margin-left: 10px;" mat-raised-button color="primary" routerLink="/event">View List</button>
+                    </div>
+                </form>
+                <!-- {{credentials | json}} -->
+            </div>
+        </div>
+    </div>
+</div>

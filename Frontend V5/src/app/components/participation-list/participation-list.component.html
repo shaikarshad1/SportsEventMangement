@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<h1 class="text-center mt">Participation List</h1>
+<div class="bootstrap-wrapper">
+    <div class="container mt">
+        
+        <button  mat-raised-button color="primary" class="mb"  routerLink='/addParticipation'>Add Participant</button>
+        <div class="row">
+<table id="customers">
+    
+    <thead>
+        <tr>
+            <th>Participation Id</th>
+            
+            <th>Player Name</th>
+            <th>Event Name</th>
+            <th>Sports Name</th>
+            <th>Player Id</th>
+            <th>Event Id</th>
+            <th>Sports Id</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let player of participationarray">
+            <td>{{player.participation_id}}</td>
+            <td>{{player.player_name}}</td>
+            <td>{{player.event_name}}</td>
+            <td>{{player.sports_name}}</td>
+            <td>{{player.player_id}}</td>
+            <td>{{player.event_id}}</td>
+            <td>{{player.sports_id}}</td>
+            <td>{{player.status}}</td>
+            <td>
+                <button  *ngIf="player.status == 'Declined' || player.status == 'pending'" type="button" [disabled]="player.disabled" mat-raised-button style="background-color: rgb(12, 134, 126);color: #fff;" (click)="approval(player,player.participationId)">Approve</button>
+                <button *ngIf="player.status == 'Approved'"type="button" mat-raised-button color="warn" (click)="decline(player,player.participationId)">Decline</button>
+            </td>
+        </tr>  
+  </tbody>
+</table>
+<!-- <h3 class="text-center red">{{noDataDisplay}}</h3> -->
+</div>
+</div>
+</div>
+
+</body>
+</html>

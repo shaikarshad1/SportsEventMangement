@@ -1,0 +1,38 @@
+<html>
+<head>
+</head>
+<body>
+
+
+<h1 class="text-center mt">Sports List</h1>
+<div class="bootstrap-wrapper">
+    <div class="container mt">
+        <button  mat-raised-button color="primary" class="mb"  routerLink='/searchSports'>Search Sports</button>
+        <div class="row">
+<table id="customers">  
+    <thead>
+        <tr>
+            <th>Sports Id</th>
+            
+            <th>Sports Name</th>
+            <th>Sports Type</th>
+            <th>No Of Players</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let Event of sportslistarray">
+            <td>{{Event.sportsId}}</td>
+           
+            <td>{{Event.sportsName}}</td>
+            <td>{{Event.sportsType}}</td>
+            <td>{{Event.noOfPlayers}}</td>
+        </tr>  
+  </tbody>
+</table>
+<h3 class="text-center red">{{noDataFound}}</h3>
+</div>
+</div>
+</div>
+
+</body>
+</html>

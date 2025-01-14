@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<h1 class="text-center mt">Players List</h1>
+<div class="bootstrap-wrapper">
+    <div class="container mt">
+        <button  mat-raised-button color="primary" class="mb"  routerLink='/addplayer'>Add Player</button>
+        <div class="row">
+<table id="customers">
+    
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Player Name</th>
+            <th>Age</th>
+            <th>Contact Number</th>
+            <th>Email Id</th>
+            <th>Gender</th>
+            <th>Sports Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let player of playerarray">
+            <td>{{player.playerId}}</td>
+            <td>{{player.playerName}}</td>
+            <td>{{player.age}}</td>
+            <td>{{player.contactNumber}}</td>
+            <td>{{player.email}}</td>
+            <td>{{player.gender}}</td>
+            <td>{{player.sportsName}}</td>
+            <td>
+                <button type="button" mat-raised-button color="warn" (click)="alertConfirmation(player,player.playerId)">Delete</button>&nbsp;&nbsp;
+            </td>
+        </tr>  
+  </tbody>
+</table>
+<h3 class="text-center red">{{noDataDisplay}}</h3>
+</div>
+</div>
+</div>
+
+</body>
+</html>
